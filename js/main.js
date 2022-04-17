@@ -1,9 +1,18 @@
-import * as d3 from "https://cdn.skypack.dev/d3@7";
+// import * as d3 from "https://cdn.skypack.dev/d3@7";
 
 d3.csv('data/all_data.csv')
 .then(data => {
 
-    data.forEach(d => {
-        
+    data.forEach((d) => {
+
+        for (let key in d) {
+            if (/\d/.test(d[key])) {
+                d[key] = +d[key] // convert any numbers present to ints
+            }
+        }
+
+        console.log(d)
+
     })
 })
+.catch(error => console.error(error));
