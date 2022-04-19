@@ -1,4 +1,3 @@
-// import * as d3 from "https://cdn.skypack.dev/d3@7";
 
 characterData = []
 totalData = []
@@ -15,7 +14,6 @@ d3.csv('data/all_data.csv')
             }
         }
 
-
         // TODO: restructure data for plotting on charts - use d3.groups
         characterGroups = d3.groups(data, d => d.Character);
 
@@ -27,6 +25,9 @@ d3.csv('data/all_data.csv')
         // console.log(szn1Eps);
 
     })
+    
+    wordCloud = new WordCloud({ parentElement: '#word-cloud'}, data)
+
 
     characterData = characterGroups.slice(0,-1);
     totalData = characterGroups.slice(-1);
