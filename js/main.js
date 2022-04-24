@@ -1,4 +1,3 @@
-
 characterData = []
 totalData = []
 let characterGroups
@@ -24,8 +23,9 @@ d3.csv('data/all_data.csv')
     let charGroups = d3.groups(data, d=> d.Character)
 
     
-    wordCloud = new WordCloud({ parentElement: '#word-cloud'}, data)
+    let wordCloud = new WordCloud({ parentElement: '#word-cloud'}, data)
 
+    let phraseList = new PhraseList({parentElement: '#phrase-list'}, data)
 
     characterData = characterGroups.slice(0,-1);
     totalData = characterGroups.slice(-1);

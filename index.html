@@ -14,6 +14,7 @@
         <script src="js/wordCloud.js"></script>
         <script src="js/main.js"></script>
         <script src="js/lineChart.js"></script>
+        <script src="js/phraseList.js"></script>
         <script src="js/barChart.js"></script>
 
 
@@ -22,10 +23,12 @@
 
         <div class="container">
             <div class="item1">
-                <p>Select a Character: </p>
-                <select id="lineChartCharacterSelect"></select>
-                <p>Select a Season: </p>
-                <select id="lineChartSeasonSelect"></select>
+                <div class="select-lines">
+                    Character: <select id="lineChartCharacterSelect"></select>
+                </div>
+                <div class="select-lines">
+                    Season: <select id="lineChartSeasonSelect"></select>
+                </div>
             </div>
             <div class="item2">
                 <h3>Number of Lines Spoken by Each Character</h2>
@@ -35,12 +38,22 @@
                 </div>
             </div>
             <div class="item3">
-                <select id="wordCloudCharacterSelect"></select>
-                <select id="wordCloudSeasonSelect"></select>
+                <div class="select-lines">
+                    Character: <select id="wordCloudCharacterSelect"></select>
+                </div>
+                <div class="select-lines">
+                    Season: <select id="wordCloudSeasonSelect"></select>
+                </div>
             </div>
             <div class="item4">
                 <h3>Top Words for Each Character</h2>
                 <div id="word-cloud"></div>
+            </div>
+            <div class="item7">
+                <div id="phrase-list">
+                    <h2>Top 3 Phrases:</h2>
+                    <ol></ol>
+                </div>
             </div>
             <div class="item5">
                 <div class="select-lines">
@@ -67,8 +80,8 @@
                 <svg id="wordLines" style="margin:10px;"></svg>
             </div>
 
-            <div class="item7">
-                <img src="images/tvposter.jpg" alt="Parks and Rec TV Poster" width="50%">
+            <div class="item9">
+                <img src="images/tvposter.jpg" alt="Parks and Rec TV Poster" width="100%">
             </div>
 
             <div class="item8">
@@ -76,6 +89,8 @@
             </div>
 
         </div>
+
+        <div id="barChartTooltip"></div>
         <!-- <div class="select-lines">
             Season: 
             <select id="seasonSelect" name="season">

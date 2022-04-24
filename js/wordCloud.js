@@ -17,7 +17,7 @@ class WordCloud{
         
 
         this.data = _data
-        console.log(this.data)
+        // console.log(this.data)
         this.initVis()
     }
 
@@ -35,9 +35,6 @@ class WordCloud{
         let containerWidth = vis.config.width + vis.config.margin.left + vis.config.margin.right
         let containerHeight = vis.config.height + vis.config.margin.top + vis.config.margin.bottom
 
-        vis.xValue = d => d.x_value
-        vis.yValue = d => d.y_value
-
         vis.svg = d3.select(vis.config.parentElement)
             .append('svg')
                 .attr('width', containerWidth)
@@ -47,9 +44,12 @@ class WordCloud{
                 .attr("transform", "translate(" + vis.config.width / 2 + "," + vis.config.height / 2 + ")")
 
         // Add functionality to the color by dropdown
-        let options = vis.data.map((person, index) => ({ name: person.Character, value: index }));
+        let options = vis.data.map((person, index) => ({ name: person.Character, value: index }))
+        options = options.filter((d) => (d.name != "Total"));
         let seasonOptions = [{name:'All Seasons', value: '0'},{name:'Season 1',value:'1'},{name:'Season 2',value:'2'},{name:'Season 3',value:'3'},{name:'Season 4',value:'4'},{name:'Season 5',value:'5'},{name:'Season 6',value:'6'},{name:'Season 7',value:'7'}]
         
+        // console.log(options)
+
         d3.select("#wordCloudCharacterSelect")
             .selectAll('myOptions')
             .data(options)
@@ -127,12 +127,12 @@ class WordCloud{
                 break;
             
         }
-        console.log(myWords)
+        // console.log(myWords)
         let minVal = d3.min(myWords, function (d) {return +d.value;})
         let maxVal = d3.max(myWords, function (d) {return +d.value;})
 
-        console.log(minVal)
-        console.log(maxVal)
+        // console.log(minVal)
+        // console.log(maxVal)
 
         vis.fontScale = d3.scaleLinear()
             .domain([minVal,maxVal])
