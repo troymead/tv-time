@@ -27,6 +27,11 @@
     stroke-width: 2px;
 }
 
+#line-y-label {
+    /* transform: rotate(90deg); */
+    margin: 0;
+}
+
 .container {
     display: grid;
     grid-template-columns: repeat(5,1fr);
@@ -54,5 +59,12 @@
     grid-area: 5 / 2 / 7 / 6;
 }
 
+.item7 {
+    grid-area: 3 / 4 / 5 / 6;
+}
+
+.item8 {
+    grid-area: 5 / 4 / 7 / 6;
+}
 
   
