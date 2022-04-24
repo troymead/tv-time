@@ -25,7 +25,7 @@ d3.csv('data/all_data.csv')
     
     let wordCloud = new WordCloud({ parentElement: '#word-cloud'}, data)
 
-    let phraseList = new PhraseList({parentElement: '#phrase-list'}, data)
+    let phraseList = new PhraseList({parentElement: '#phrase-list'}, data, wordCloud)
 
     characterData = characterGroups.slice(0,-1);
     totalData = characterGroups.slice(-1);
