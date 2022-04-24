@@ -10,21 +10,19 @@ d3.csv('data/all_data.csv')
 
         for (let key in d) {
             if (/\d/.test(d[key])) {
-                d[key] +d[key]; // convert any numbers present to ints
+                d[key] = +d[key]; // convert any numbers present to ints
             }
         }
 
         // TODO: restructure data for plotting on charts - use d3.groups
         characterGroups = d3.groups(data, d => d.Character);
 
-        // let sznEps = {};
-
-        // let szn1Eps = d3.groups(data, d => d.S1Eps);
-
-        // console.log(characterGroups);
-        // console.log(szn1Eps);
 
     })
+    console.log(data)
+
+    let charGroups = d3.groups(data, d=> d.Character)
+
     
     wordCloud = new WordCloud({ parentElement: '#word-cloud'}, data)
 
@@ -39,6 +37,10 @@ d3.csv('data/all_data.csv')
         'containerHeight': 400, 
         'containerWidth': 600,
     }, [barChartData, totalData])
+
+    let numLinesChart = new LineChart({
+        'parentElement': '#numLinesChart'
+    }, charGroups)
 
 })
 .catch(error => console.error(error));

@@ -3,7 +3,7 @@
     <head>
         <title></title>
         <link rel="" />
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/style.css">
 
     </head>
     <body>
@@ -14,35 +14,57 @@
         <script src="js/wordCloud.js"></script>
         <script src="js/main.js"></script>
         <script src="js/lineChart.js"></script>
+        <script src="js/barChart.js"></script>
 
 
         <h1>Project 3: TV Time</h1>
         <h1>By: Briana Antiri, Troy Meadows, Faith Tremmel, and Sydni-Dee Venter</h1>
 
-        <div class="select-number-of-words">
-            <label for="characters">Choose a Character: </label>
-            <select id="characters" name="characters">
-                <option value="">Leslie Knope</option>
-                <option value="">Tom Haverford</option>
-                <option value="">Andy Dwyer</option>
-                <option value="">Ben Wyatt</option>
-                <option value="">Ron Swanson</option>
-                <option value="">Ann Perkins</option>
-                <option value="">April Ludgate</option>
-                <option value="">Chris Traeger</option>
-                <option value="">Donna Meagle</option>
-                <option value="">Jerry Gergich</option>
-                <option value="">All</option>
-            </select>
+        <div class="container">
+            <div class="item1">
+                <p>Select a Character: </p>
+                <select id="lineChartCharacterSelect"></select>
+                <p>Select a Season: </p>
+                <select id="lineChartSeasonSelect"></select>
+            </div>
+            <div class="item2">
+                <h2>Number of Lines Spoken by Each Character</h2>
+                <svg id="numLinesChart"></svg>
+            </div>
+            <div class="item3">
+                <select id="wordCloudCharacterSelect"></select>
+                <select id="wordCloudSeasonSelect"></select>
+            </div>
+            <div class="item4">
+                <h2>Top Words for Each Character</h2>
+                <div id="word-cloud"></div>
+            </div>
+            <div class="item5">
+                <div class="select-lines">
+                    Season: 
+                    <select id="seasonSelect" name="season">
+                        <option value ="S1">1</option>
+                        <option value ="S2">2</option>
+                        <option value ="S3">3</option>
+                        <option value ="S4">4</option>
+                        <option value ="S5">5</option>
+                        <option value ="S6">6</option>
+                        <option value ="S7">7</option>
+                    </select>
+                </div>
+        
+                <div class="select-lines">
+                    Episode: 
+                    <select id="episodeSelect"></select>
+                </div>
+        
+            </div>
+            <div class="item6">
+                <svg id="wordLines" style="margin:10px;"></svg>
+            </div>
+
         </div>
-        <select id="wordCloudCharacterSelect"></select>
-        <select id="wordCloudSeasonSelect"></select>
-
-        <div id="word-cloud"></div>
-
-        <div class="line-chart"></div>
-
-        <div class="select-lines">
+        <!-- <div class="select-lines">
             Season: 
             <select id="seasonSelect" name="season">
                 <option value ="S1">1</option>
@@ -58,18 +80,9 @@
         <div class="select-lines">
             Episode: 
             <select id="episodeSelect"></select>
-        </div>
+        </div> -->
 
-        <svg id="wordLines" style="margin:10px;"></svg>
-
-        <!-- D3 bundle -->
-        <script src="js/d3.v6.min.js"></script>
-        <script src="https://d3js.org/d3.v7.min.js"></script>
-
-        <!-- Our JS code-->
-        <script src="js/main.js"></script>
-        <script src="js/barChart.js"></script>
-        <script src="js/lineChart.js"></script>
+        <!-- <svg id="wordLines" style="margin:10px;"></svg> -->
 
     </body>
 </html>
