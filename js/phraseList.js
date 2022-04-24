@@ -1,6 +1,6 @@
 class PhraseList{
 
-    constructor(_config, _data) {
+    constructor(_config, _data, wordCloud) {
         this.config = {
             parentElement: _config.parentElement,
             tooltip: _config.tooltipElement,
@@ -13,6 +13,8 @@ class PhraseList{
                 left: 45
             }
         }
+
+        this.wordCloud = wordCloud
         
 
         this.data = _data
@@ -65,7 +67,9 @@ class PhraseList{
 
         d3.select("#wordCloudCharacterSelect").on("change", function(d) {
             vis.selectedCharacterOption = d3.select(this).property("value")
-            // console.log(vis.selectedCharacterOption)
+        //     // console.log(vis.selectedCharacterOption)
+            vis.wordCloud.selectedCharacterOption = vis.selectedCharacterOption
+            vis.wordCloud.updateVis()
             vis.updateVis()
         })
 

@@ -75,6 +75,7 @@ class WordCloud{
         d3.select("#wordCloudCharacterSelect").on("change", function(d) {
             vis.selectedCharacterOption = d3.select(this).property("value")
             console.log(vis.selectedCharacterOption)
+            
             vis.updateVis()
         })
 
@@ -97,6 +98,8 @@ class WordCloud{
     renderVis(){
 
         let vis = this;
+        console.log(vis.selectedCharacterOption)
+
         let selectedData = vis.data[vis.selectedCharacterOption]
 
         var myWords;
