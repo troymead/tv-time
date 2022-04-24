@@ -16,7 +16,7 @@ class PhraseList{
         
 
         this.data = _data
-        // console.log(this.data)
+        console.log("phrase list")
         this.initVis()
     }
 

@@ -7,6 +7,7 @@
 
     </head>
     <body>
+
         <script src="js/d3.v6.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
 
@@ -14,17 +15,74 @@
         <script src="js/main.js"></script>
         <script src="js/lineChart.js"></script>
         <script src="js/phraseList.js"></script>
+        <script src="js/barChart.js"></script>
 
 
         <h1>Project 3: TV Time</h1>
         <h1>By: Briana Antiri, Troy Meadows, Faith Tremmel, and Sydni-Dee Venter</h1>
 
-        <div class="line-chart"></div>
+        <div class="container">
+            <div class="item1">
+                <div class="select-lines">
+                    Character: <select id="lineChartCharacterSelect"></select>
+                </div>
+                <div class="select-lines">
+                    Season: <select id="lineChartSeasonSelect"></select>
+                </div>
+            </div>
+            <div class="item2">
+                <h2>Number of Lines Spoken by Each Character</h2>
+                <svg id="numLinesChart"></svg>
+            </div>
+            <div class="item3">
+                <div class="select-lines">
+                    Character: <select id="wordCloudCharacterSelect"></select>
+                </div>
+                <div class="select-lines">
+                    Season: <select id="wordCloudSeasonSelect"></select>
+                </div>
+            </div>
+            <div class="item4">
+                <h2>Top Words for Each Character</h2>
+                <div id="word-cloud"></div>
+            </div>
+            <div class="item7">
+                <div id="phrase-list">
+                    <h2>Top 3 Phrases:</h2>
+                    <ol></ol>
+                </div>
+            </div>
+            <div class="item5">
+                <div class="select-lines">
+                    Season: 
+                    <select id="seasonSelect" name="season">
+                        <option value ="S1">1</option>
+                        <option value ="S2">2</option>
+                        <option value ="S3">3</option>
+                        <option value ="S4">4</option>
+                        <option value ="S5">5</option>
+                        <option value ="S6">6</option>
+                        <option value ="S7">7</option>
+                    </select>
+                </div>
+        
+                <div class="select-lines">
+                    Episode: 
+                    <select id="episodeSelect"></select>
+                </div>
+        
+            </div>
+            <div class="item6">
+                <h2></h2>
+                <svg id="wordLines" style="margin:10px;"></svg>
+            </div>
 
-        <div class="select-lines">
+        </div>
+
+        <div id="barChartTooltip"></div>
+        <!-- <div class="select-lines">
             Season: 
             <select id="seasonSelect" name="season">
-                <option value="Total">All</option>
                 <option value ="S1">1</option>
                 <option value ="S2">2</option>
                 <option value ="S3">3</option>
@@ -38,32 +96,9 @@
         <div class="select-lines">
             Episode: 
             <select id="episodeSelect"></select>
-        </div>
+        </div> -->
 
-
-        <svg id="wordLines" style="margin:10px;"></svg>
-
-
-        <select id="wordCloudCharacterSelect"></select>
-        <select id="wordCloudSeasonSelect"></select>
-
-        <div id="word-cloud"></div>
-        <div id="phrase-list">
-            <h3>Top 3 Phrases:</h3>
-            <ol></ol>
-        </div>
-
-        <div id="barChartTooltip"></div>
-
-
-        <!-- D3 bundle -->
-        <script src="js/d3.v6.min.js"></script>
-        <script src="https://d3js.org/d3.v7.min.js"></script>
-
-        <!-- Our JS code-->
-        <script src="js/main.js"></script>
-        <script src="js/barChart.js"></script>
-        <script src="js/lineChart.js"></script>
+        <!-- <svg id="wordLines" style="margin:10px;"></svg> -->
 
     </body>
 </html>

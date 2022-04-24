@@ -192,12 +192,16 @@ class BarChart{
             let chart = vis.chart.selectAll('.bar')
                 .data(vis.data);
 
+            console.log(vis.data)
+            console.log(vis.yValue)
+            console.log(vis.height)
             vis.yScale = d3.scaleLinear()
                 .domain([0,d3.max(vis.data, vis.yValue)]) 
                 .range([vis.height, 0]);
+            console.log(vis.yScale)
             vis.yAxis = d3.axisLeft(vis.yScale);
 
-            d3.select(".y-axis").call(vis.yAxis)
+            vis.svg.select(".y-axis").call(vis.yAxis)
 
 
             chart
