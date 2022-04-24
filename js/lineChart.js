@@ -45,6 +45,14 @@ class LineChart {
         vis.yAxisG = vis.chart.append('g')
             .attr('class', 'axis y-axis')
 
+        vis.xAxisTitle = vis.svg.append('text')
+            .attr('class', 'x label')
+            .attr('text-anchor', 'end')
+            .attr('y', vis.height+50)
+            .attr('x', vis.width+150)
+            .text('Season/Episode')
+            .style('font-size', '12px')
+
         vis.marks = vis.chart.append('g')
 
         vis.trackingArea = vis.chart.append('rect')
@@ -224,7 +232,6 @@ class LineChart {
 
         vis.xAxisG.call(vis.xAxis)
         vis.yAxisG.call(vis.yAxis)
-
 
         console.log(vis.charLineCount)
         vis.marks.selectAll('.chart-line')
