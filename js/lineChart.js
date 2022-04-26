@@ -55,21 +55,6 @@ class LineChart {
 
         vis.marks = vis.chart.append('g')
 
-        vis.trackingArea = vis.chart.append('rect')
-            .attr('width', vis.width+100)
-            .attr('height', vis.height+100)
-            .attr('fill', 'none')
-            .attr('pointer-events', 'all')
-
-        vis.tooltip = vis.chart.append('g')
-            .attr('class', 'tooltip')
-            .style('display', 'none')
-
-        vis.tooltip.append('circle')
-            .attr('r', 4)
-            
-        vis.tooltip.append('text')
-
         let options = vis.data.map((person, index) => ({name: person[0], value: index}))
         console.log(options)
         let seasonOptions = [
@@ -150,14 +135,7 @@ class LineChart {
         vis.colors = ['#6929c4','#005d5d','#fa4d56','#198038','#ee538b','#009d9a','#8a3800','#1192e8','#9f1853','#002d9c','#a56eff']
         vis.charLineCount = []
         console.log(vis.data)
-        // vis.charLineCount = this.allData(vis.data)
         console.log(vis.charLineCount)
-
-        // if (vis.selectedCharacterOption == 11) {
-        //     vis.charLineCount = this.allData(vis.data)
-        // } else {
-
-        // }
 
         let selectedData = vis.data[vis.selectedCharacterOption]
         console.log(selectedData)
@@ -241,40 +219,30 @@ class LineChart {
         .attr('d', vis.line)
         .style('stroke', vis.colors[vis.selectedCharacterOption])
 
-        vis.xScale.invert = (function(){
-            var domain = vis.xScale.domain()
-            var range = vis.xScale.range()
-            var scale = d3.scaleQuantize().domain(range).range(domain)
+        const circles = vis.chart.selectAll('.point')
+            .data(vis.charLineCount, d=>d.y_value)
+            .join('circle')
+                .attr('class', 'point')
+                .attr('r', 6)
+                .attr('cy', d => vis.yScale(vis.yValue(d)))
+                .attr('cx', d => vis.xScale(vis.xValue(d)))
+                .attr('fill', vis.colors[vis.selectedCharacterOption])
 
-            return function(x) {
-                return scale(x)
-            }
-        })()
-
-
-        vis.trackingArea
-            .on('mouseenter', () => {
-                vis.tooltip.style('display', 'block')
+        circles
+            .on('mouseover', (event,d) => {
+                d3.select('#line-tooltip')
+                    .style('display', 'block')
+                    .style('left', (event.pageX + 15)+'px')
+                    .style('top', (event.pageY + 15)+'px')
+                    .html(`
+                        <div class="tooltip-title">${d.x_value}</div>
+                        <p class="tooltip-text">Line Count: ${d.y_value}</p>
+                    `)
             })
             .on('mouseleave', () => {
-                vis.tooltip.style('display', 'none')
-            })
-            .on('mousemove', () => {
-                const xPos = d3.pointer(event, this)[0]
-                const lineCount = vis.xScale.invert(xPos)
+                d3.select('#line-tooltip').style('display', 'none');
+            });
 
-                const index = vis.bisectSeason(vis.charLineCount, lineCount, 1)
-                const a = vis.charLineCount[index - 1]
-                const b = vis.charLineCount[index]
-                const d = b && (lineCount - a.x_value > b.x_value - lineCount) ? b : a
-
-                vis.tooltip.select('circle')
-                    .attr('transform', `translate(${vis.xScale(d.x_value)},${vis.yScale(d.y_value)})`)
-
-                vis.tooltip.select('text')
-                    .attr('transform', `translate(${vis.xScale(d.x_value)},${vis.yScale(d.y_value)-15})`)
-                    .text(`${d.x_value}: ${d.y_value}`)
-            })
         
         
     }
